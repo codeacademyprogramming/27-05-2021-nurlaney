@@ -30,8 +30,12 @@
       font-size: 20px;
       text-align-last: center;
       cursor: pointer;
-      option {
-        background-color: $background-color;
+      & option {
+        background-color: #222222;
+        border: none;
+      }
+      & option:hover {
+        background-color: $text-color;
       }
     }
   }
@@ -39,6 +43,8 @@
     background-color: #222222;
     padding: 10px 0;
     text-align: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
     p {
       margin: 0;
       font-size: 60px;

@@ -1,0 +1,60 @@
+{
+  "coffee": [
+    {
+      "id": 1,
+      "name": "Latte",
+      "price": "5.20"
+    },
+    {
+      "id": 2,
+      "name": "Cappucino",
+      "price": "7.40"
+    },
+    {
+      "id": 3,
+      "name": "Americano",
+      "price": "8.60"
+    },
+    {
+      "id": 4,
+      "name": "Espresso",
+      "price": "6.10"
+    },
+    {
+      "id": 5,
+      "name": "Mocha",
+      "price": "4.50"
+    },
+    {
+      "id": 6,
+      "name": "Lava Java",
+      "price": "11.71"
+    }
+  ],
+  "order": [
+    {
+      "id": 1,
+      "tableNo": 10,
+      "coffeeId": 1,
+      "count": 2,
+      "note": "hi mr john",
+      "price": "35"
+    },
+    {
+      "id": 2,
+      "tableNo": 4,
+      "coffeeId": 6,
+      "count": 1,
+      "note": "hdds ms vohn",
+      "price": "40"
+    },
+    {
+      "id": 3,
+      "tableNo": 4,
+      "coffeeId": 4,
+      "count": 4,
+      "note": "ha jhd uiojkn",
+      "price": "44"
+    }
+  ]
+}

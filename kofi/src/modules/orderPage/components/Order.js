@@ -12,6 +12,7 @@ export const Order = () => {
             </div>
             <div className='coffee'>
                 <span>Latte</span>
+                <span>35$</span>
                 <span>x4</span>
             </div>
             <div className='note'>
