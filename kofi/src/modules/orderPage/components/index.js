@@ -2,6 +2,7 @@ import '../styles/index.scss';
 import React from 'react'
 import { Sidenav } from './Sidenav'
 import { Order } from './Order';
+import { Nav } from './Nav';
 
 export const OrderPage = () => {
     return (
@@ -12,6 +13,7 @@ export const OrderPage = () => {
                 </div>
                 <div className='col-10' style={{ padding: 0 }}>
                     <div className='right'>
+                        <Nav />
                         <div className='row'>
                             <div className='col-3'>
                                 <Order />

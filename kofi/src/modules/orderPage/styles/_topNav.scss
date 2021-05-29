@@ -1,0 +1,23 @@
+nav {
+  background-color: $background-color;
+  justify-content: flex-end !important;
+  margin-bottom: 20px;
+  .btn {
+    background-color: $secondary-text-color;
+    margin-left: 10px;
+    color: $background-color;
+    font-weight: bold;
+  }
+  .btn:focus,
+  .btn:active:focus,
+  .btn.active:focus,
+  .btn.focus,
+  .btn:active.focus,
+  .btn.active.focus {
+    outline: none !important;
+    box-shadow: none;
+  }
+  .add {
+    background-color: #49495f;
+  }
+}
