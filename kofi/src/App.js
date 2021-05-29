@@ -1,11 +1,9 @@
-import logo from './logo.svg';
 import './App.scss';
+import { OrderPage } from './modules/orderPage/components';
 
 function App() {
   return (
-    <div className="container">
-      #
-    </div>
+    <OrderPage />
   );
 }
 
