@@ -11,11 +11,11 @@ export const Order = ({ order, coffee, handleRemoveOrder }) => {
             </div>
             <div className='coffee'>
                 <span>{coffee.name}</span>
-                <span>{coffee.price}$</span>
+                <span>{(coffee.price * order.count).toFixed(2)}$</span>
                 <span>x{order.count}</span>
             </div>
             <div className='note'>
-                <p> by accident, sometimes on purpose (injected humour and the like).</p>
+                <p>{order.note}</p>
             </div>
             <div className='status'>
                 <select defaultValue={order.status}>
