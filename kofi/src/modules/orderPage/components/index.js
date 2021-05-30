@@ -8,6 +8,9 @@ import Loader from "react-loader-spinner";
 import { coffeeService } from '../coffeeService';
 import { OrderOperations } from './OrderOperations';
 import { addOrder, removeOrder, updateOrder } from '../actions/orderActions';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 
 export const OrderPage = () => {
     const orders = useSelector(state => state.orders);
@@ -21,6 +24,29 @@ export const OrderPage = () => {
         note: ''
     });
     const dispatch = useDispatch();
+    const MySwal = withReactContent(Swal);
+    const [, setShowAlert] = useState(null);
+
+
+    const showPopup = () => {
+        setShowAlert({
+            alert: (
+                MySwal.fire({
+                    didOpen: () => {
+                        MySwal.clickConfirm()
+                    }
+                }).then(() => {
+                    return MySwal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Saved successfully !',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                })
+            )
+        })
+    }
 
     function handleChange(evt) {
         const { value, name } = evt.target
@@ -92,6 +118,7 @@ export const OrderPage = () => {
             }
             const dispatchUpdateOrder = updateOrder(dispatch);
             dispatchUpdateOrder(payload);
+            showPopup();
         }
         setOpenDidalog(false);
         setformState({
