@@ -11,8 +11,8 @@ export const Order = ({ order, coffee }) => {
                 <p>{order.tableNo}</p>
             </div>
             <div className='coffee'>
-                <span>{coffee.name}</span>
-                <span>{coffee.price}$</span>
+                <span>sdfsdf</span>
+                <span>gfdgd$</span>
                 <span>x{order.count}</span>
             </div>
             <div className='note'>

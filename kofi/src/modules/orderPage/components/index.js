@@ -47,9 +47,15 @@ export const OrderPage = () => {
             status: 'Created',
             price: Number(formState.count) * Number(coffee.price)
         };
+        const editedPayload = {
+            ...payload,
+            coffeeId: Number(payload.coffeeId),
+            count: Number(payload.count),
+            tableNo: Number(payload.tableNo)
+        }
         const dispatchAddOrder = addOrder(dispatch);
-        dispatchAddOrder(payload);
-    }, [formState]);
+        dispatchAddOrder(editedPayload);
+    }, [formState, dispatch, coffees.data]);
 
     return (
         <>
@@ -78,7 +84,7 @@ export const OrderPage = () => {
                                     <div className='row'>
                                         {
                                             orders.data.map((order) => {
-                                                const coffee = coffeeService.getCoffeeById(coffees.data, order.id);
+                                                const coffee = coffeeService.getCoffeeById(coffees.data, order.coffeeId);
                                                 return (<div key={order.id} className='col-3'>
                                                     <Order order={order} coffee={coffee} />
                                                 </div>)
