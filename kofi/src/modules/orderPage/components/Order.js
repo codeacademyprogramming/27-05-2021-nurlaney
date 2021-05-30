@@ -1,11 +1,10 @@
 import React from 'react'
-import EditIcon from '@material-ui/icons/Edit';
 
-export const Order = ({ order, coffee, handleRemoveOrder }) => {
+export const Order = ({ order, coffee, handleRemoveOrder, handleClickOpenDialog }) => {
     return (
         <div className='order'>
             <span onClick={handleRemoveOrder} id={order.id} style={{ position: 'absolute', right: '30px', top: '34px', color: '#c3363f', cursor: 'pointer', fontWeight: 'bold' }} >X</span>
-            <EditIcon style={{ position: 'absolute', right: '55px', top: '34px', color: 'blue', cursor: 'pointer' }} />
+            <span onClick={handleClickOpenDialog} id={order.id} style={{ position: 'absolute', right: '50px', top: '34px', color: 'blue', cursor: 'pointer', fontWeight: 'bold' }}>edit</span>
             <div className='table-number'>
                 <p>{order.tableNo}</p>
             </div>

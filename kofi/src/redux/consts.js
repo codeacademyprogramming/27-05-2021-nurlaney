@@ -5,6 +5,7 @@ export const ORDER_ACTIONS = {
     GET_ORDER: "GET_ORDER",
     ADD_ORDER: "ADD_ORDER",
     REMOVE_ORDER: "REMOVE_ORDER",
+    UPDATE_ORDER: "UPDATE_ORDER"
 }
 
 export const ASYNC_STATUS = {

@@ -7,12 +7,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from "react-loader-spinner";
 import { coffeeService } from '../coffeeService';
 import { OrderOperations } from './OrderOperations';
-import { addOrder, removeOrder } from '../actions/orderActions';
+import { addOrder, removeOrder, updateOrder } from '../actions/orderActions';
 
 export const OrderPage = () => {
     const orders = useSelector(state => state.orders);
     const coffees = useSelector(state => state.coffees);
     const [openDialog, setOpenDidalog] = React.useState(false);
+    const [selectedOrder, setselectedOrder] = useState(null);
     const [formState, setformState] = useState({
         coffeeId: '',
         count: '',
@@ -37,8 +38,28 @@ export const OrderPage = () => {
         dispatchRemoveOrder(payload);
     }, [dispatch]);
 
-    const handleClickOpenDialog = () => {
+    const handleClickOpenDialog = (e) => {
         setOpenDidalog(true);
+        if (e.target.id) {
+            const editedOrder = orders.data.find(order => order.id === Number(e.target.id));
+            setformState({
+                ...formState,
+                coffeeId: editedOrder.coffeeId,
+                count: editedOrder.count,
+                tableNo: editedOrder.tableNo,
+                note: editedOrder.note
+            });
+            setselectedOrder(Number(e.target.id));
+        } else {
+            setformState({
+                ...formState,
+                coffeeId: '',
+                count: '',
+                tableNo: '',
+                note: ''
+            })
+            setselectedOrder(null);
+        }
     };
 
     const handleClickCloseDialog = () => {
@@ -48,16 +69,30 @@ export const OrderPage = () => {
     const handleAddDataToOrders = useCallback((e) => {
         e.preventDefault();
         const coffee = coffeeService.getCoffeeById(coffees.data, Number(formState.coffeeId));
-        const payload = {
-            ...formState,
-            status: 'Created',
-            price: Number(formState.count) * Number(coffee.price),
-            coffeeId: Number(formState.coffeeId),
-            count: Number(formState.count),
-            tableNo: Number(formState.tableNo)
-        };
-        const dispatchAddOrder = addOrder(dispatch);
-        dispatchAddOrder(payload);
+        if (selectedOrder === null) {
+            const payload = {
+                ...formState,
+                status: 'Created',
+                price: Number(formState.count) * Number(coffee.price),
+                coffeeId: Number(formState.coffeeId),
+                count: Number(formState.count),
+                tableNo: Number(formState.tableNo)
+            };
+            const dispatchAddOrder = addOrder(dispatch);
+            dispatchAddOrder(payload);
+        } else {
+            const payload = {
+                ...formState,
+                id: selectedOrder,
+                status: 'Created',
+                price: Number(formState.count) * Number(coffee.price),
+                coffeeId: Number(formState.coffeeId),
+                count: Number(formState.count),
+                tableNo: Number(formState.tableNo)
+            }
+            const dispatchUpdateOrder = updateOrder(dispatch);
+            dispatchUpdateOrder(payload);
+        }
         setOpenDidalog(false);
         setformState({
             ...formState,
@@ -66,7 +101,7 @@ export const OrderPage = () => {
             tableNo: '',
             note: ''
         })
-    }, [formState, dispatch, coffees.data]);
+    }, [formState, dispatch, coffees.data, selectedOrder]);
 
     return (
         <>
@@ -97,7 +132,7 @@ export const OrderPage = () => {
                                             orders.data.map((order, idx) => {
                                                 const coffee = coffeeService.getCoffeeById(coffees.data, order.coffeeId);
                                                 return (<div key={idx} className='col-3'>
-                                                    <Order handleRemoveOrder={handleRemoveOrder} order={order} coffee={coffee} />
+                                                    <Order handleClickOpenDialog={handleClickOpenDialog} handleRemoveOrder={handleRemoveOrder} order={order} coffee={coffee} />
                                                 </div>)
                                             })
                                         }

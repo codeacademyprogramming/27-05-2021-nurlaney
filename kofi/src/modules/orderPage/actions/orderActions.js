@@ -50,3 +50,19 @@ export function removeOrder(dispatch) {
             }))
     }
 }
+
+export function updateOrder(dispatch) {
+    return function (data) {
+        orderService.updateOrder(data)
+            .then(resp => {
+                dispatch({
+                    type: `${ORDER_ACTIONS.UPDATE_ORDER}_SUCCESS`,
+                    payload: data,
+                })
+            })
+            .catch(err => dispatch({
+                type: `${ORDER_ACTIONS.UPDATE_ORDER}_ERROR`,
+                error: err
+            }))
+    }
+}

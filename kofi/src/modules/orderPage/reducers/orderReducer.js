@@ -72,6 +72,31 @@ export function orderReducer(state = initialState, { type, payload, error }) {
                 data: [],
                 error: error
             }
+        case ORDER_ACTIONS.UPDATE_ORDER:
+            return {
+                ...state,
+                status: ASYNC_STATUS.LOADING,
+                error: null
+            };
+        case `${ORDER_ACTIONS.UPDATE_ORDER}_SUCCESS`:
+            return {
+                ...state,
+                status: ASYNC_STATUS.SUCCESS,
+                data: state.data.map(order => {
+                    if (order.id === payload.id) {
+                        return payload
+                    }
+                    return order
+                }),
+                error: null
+            };
+        case `${ORDER_ACTIONS.UPDATE_ORDER}_ERROR`:
+            return {
+                ...state,
+                status: ASYNC_STATUS.ERROR,
+                data: [],
+                error: error
+            }
         default:
             return state
     }

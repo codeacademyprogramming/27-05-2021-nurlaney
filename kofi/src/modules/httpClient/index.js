@@ -18,4 +18,8 @@ export class HttpClient {
     async delete(url, id) {
         return await axios.delete(`${this.baseUrl}/${url}/${id}`)
     }
+
+    async update(url, body) {
+        return await axios.put(`${this.baseUrl}/${url}/${body.id}`, body)
+    }
 }
