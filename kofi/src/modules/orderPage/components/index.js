@@ -1,17 +1,35 @@
 import '../styles/index.scss';
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import { Sidenav } from './Sidenav'
 import { Order } from './Order';
 import { Nav } from './Nav';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Loader from "react-loader-spinner";
 import { coffeeService } from '../coffeeService';
 import { OrderOperations } from './OrderOperations';
+import { addOrder } from '../actions/orderActions';
 
 export const OrderPage = () => {
     const orders = useSelector(state => state.orders);
     const coffees = useSelector(state => state.coffees);
     const [openDialog, setOpenDidalog] = React.useState(false);
+    const [formState, setformState] = useState({
+        coffeeId: '',
+        count: '',
+        tableNo: '',
+        note: ''
+    });
+    const dispatch = useDispatch();
+
+    function handleChange(evt) {
+        const { value, name } = evt.target
+        setformState(prewState => {
+            return {
+                ...prewState,
+                [name]: value
+            }
+        })
+    }
 
     const handleClickOpenDialog = () => {
         setOpenDidalog(true);
@@ -21,10 +39,22 @@ export const OrderPage = () => {
         setOpenDidalog(false);
     };
 
+    const handleAddDataToOrders = useCallback((e) => {
+        e.preventDefault();
+        const coffee = coffeeService.getCoffeeById(coffees.data, Number(formState.coffeeId));
+        const payload = {
+            ...formState,
+            status: 'Created',
+            price: Number(formState.count) * Number(coffee.price)
+        };
+        const dispatchAddOrder = addOrder(dispatch);
+        dispatchAddOrder(payload);
+    }, [formState]);
+
     return (
         <>
             <div className='row' style={{ marginRight: 0 }}>
-                <OrderOperations openDialog={openDialog} closeDialog={handleClickCloseDialog} />
+                <OrderOperations handleChange={handleChange} formState={formState} handleAddDataToOrders={handleAddDataToOrders} coffees={coffees.data} openDialog={openDialog} closeDialog={handleClickCloseDialog} />
                 <div className='col-2' style={{ padding: 0 }}>
                     <Sidenav />
                 </div>

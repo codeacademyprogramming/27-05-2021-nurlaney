@@ -28,6 +28,29 @@ export function orderReducer(state = initialState, { type, payload, error }) {
                 status: ASYNC_STATUS.ERROR,
                 data: [],
                 error: error
+            };
+        case ORDER_ACTIONS.ADD_ORDER:
+            return {
+                ...state,
+                status: ASYNC_STATUS.LOADING,
+                error: null
+            };
+        case `${ORDER_ACTIONS.ADD_ORDER}_SUCCESS`:
+            return {
+                ...state,
+                status: ASYNC_STATUS.SUCCESS,
+                data: [
+                    ...state.data,
+                    payload
+                ],
+                error: null
+            };
+        case `${ORDER_ACTIONS.ADD_ORDER}_ERROR`:
+            return {
+                ...state,
+                status: ASYNC_STATUS.ERROR,
+                data: [],
+                error: error
             }
         default:
             return state

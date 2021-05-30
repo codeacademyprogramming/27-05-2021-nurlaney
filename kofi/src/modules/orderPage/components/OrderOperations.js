@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -23,8 +23,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export const OrderOperations = ({ openDialog, closeDialog }) => {
+export const OrderOperations = ({ openDialog, closeDialog, coffees, handleAddDataToOrders, handleChange, formState }) => {
     const classes = useStyles();
+
 
     return (
         <Dialog fullScreen open={openDialog} onClose={closeDialog} TransitionComponent={Transition}>
@@ -36,35 +37,36 @@ export const OrderOperations = ({ openDialog, closeDialog }) => {
                     <Typography variant="h6" className={classes.title}>
                         Add order
             </Typography>
-                    <Button autoFocus variant='contained' color="secondary" onClick={closeDialog}>
+                    <Button autoFocus variant='contained' color="secondary">
                         save
             </Button>
                 </Toolbar>
             </AppBar>
             <div className='container'>
-                <form>
+                <form onSubmit={handleAddDataToOrders}>
                     <div className="form-group">
                         <label htmlFor="exampleFormControlSelect1">Example select</label>
-                        <select className="form-control" id="exampleFormControlSelect1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <select onChange={handleChange} value={formState.coffeeId || ''} name='coffeeId' className="form-control" id="exampleFormControlSelect1">
+                            {
+                                coffees.map(coffee => (
+                                    <option value={coffee.id}>{coffee.name}</option>
+                                ))
+                            }
                         </select>
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleFormControlInput1">Count</label>
-                        <input type="number" className="form-control" id="exampleFormControlInput1" placeholder="Add selected drink's count" />
+                        <input value={formState.count || ''} name='count' onChange={handleChange} type="number" className="form-control" id="exampleFormControlInput1" placeholder="Add selected drink's count" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleFormControlInput1">Table No:</label>
-                        <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="Add table number" />
+                        <input value={formState.tableNo || ''} name='tableNo' onChange={handleChange} type="number" className="form-control" id="exampleFormControlInput2" placeholder="Add table number" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleFormControlTextarea1">Small note</label>
-                        <textarea className="form-control" id="exampleFormControlTextarea1" placeholder='Add quick note here' rows="3"></textarea>
+                        <textarea value={formState.note || ''} name='note' onChange={handleChange} className="form-control" id="exampleFormControlTextarea1" placeholder='Add quick note here' rows="3"></textarea>
                     </div>
+                    <button type='submit'>save</button>
                 </form>
             </div>
         </Dialog>

@@ -15,3 +15,22 @@ export function getOrder(dispatch) {
         })
     })
 }
+
+export function addOrder(dispatch) {
+    dispatch({
+        type: ORDER_ACTIONS.ADD_ORDER
+    })
+    return function (data) {
+        orderService.addOrder(data)
+            .then(resp => {
+                dispatch({
+                    type: `${ORDER_ACTIONS.ADD_ORDER}_SUCCESS`,
+                    payload: data,
+                })
+            })
+            .catch(err => dispatch({
+                type: `${ORDER_ACTIONS.ADD_ORDER}_ERROR`,
+                error: err
+            }))
+    }
+}
