@@ -38,7 +38,8 @@
       "coffeeId": 1,
       "count": 2,
       "note": "hi mr john",
-      "price": "35"
+      "price": "35",
+      "status": "Done"
     },
     {
       "id": 2,
@@ -46,7 +47,8 @@
       "coffeeId": 6,
       "count": 1,
       "note": "hdds ms vohn",
-      "price": "40"
+      "price": "40",
+      "status": "Done"
     },
     {
       "id": 3,
@@ -54,7 +56,8 @@
       "coffeeId": 4,
       "count": 4,
       "note": "ha jhd uiojkn",
-      "price": "44"
+      "price": "44",
+      "status": "Done"
     }
   ]
 }

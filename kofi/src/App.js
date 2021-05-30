@@ -4,6 +4,13 @@ import './App.scss';
 import { getCoffe } from './modules/orderPage/actions/coffeActions';
 import { getOrder } from './modules/orderPage/actions/orderActions';
 import { OrderPage } from './modules/orderPage/components';
+import {
+  BrowserRouter as
+    Switch,
+  Route,
+  BrowserRouter,
+} from "react-router-dom";
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -11,7 +18,13 @@ function App() {
     getOrder(dispatch);
   }, [dispatch])
   return (
-    <OrderPage />
+    <BrowserRouter>
+      <Switch>
+        <Route path='/' exact>
+          <OrderPage />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 

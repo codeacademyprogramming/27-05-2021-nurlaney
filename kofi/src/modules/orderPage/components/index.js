@@ -5,9 +5,11 @@ import { Order } from './Order';
 import { Nav } from './Nav';
 import { useSelector } from 'react-redux';
 import Loader from "react-loader-spinner";
+import { coffeeService } from '../coffeeService';
 
 export const OrderPage = () => {
     const orders = useSelector(state => state.orders);
+    const coffees = useSelector(state => state.coffees);
 
     return (
         <>
@@ -27,16 +29,20 @@ export const OrderPage = () => {
                                             color="#6f2232"
                                             height={150}
                                             width={150}
-                                            secondaryColor="#6f2232"
                                         />
                                     </div>
                                 )
                                 :
                                 (
                                     <div className='row'>
-                                        <div className='col-3'>
-                                            <Order />
-                                        </div>
+                                        {
+                                            orders.data.map((order) => {
+                                                const coffee = coffeeService.getCoffeeById(coffees.data, order.id);
+                                                return (<div key={order.id} className='col-3'>
+                                                    <Order order={order} coffee={coffee} />
+                                                </div>)
+                                            })
+                                        }
                                     </div>
                                 )
                         }
