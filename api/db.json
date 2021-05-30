@@ -33,84 +33,21 @@
   ],
   "order": [
     {
-      "id": 1,
-      "tableNo": 10,
-      "coffeeId": 1,
-      "count": 2,
-      "note": "hi mr john",
-      "price": "35",
-      "status": "Done"
-    },
-    {
-      "id": 2,
-      "tableNo": 4,
-      "coffeeId": 6,
+      "coffeeId": 4,
       "count": 1,
-      "note": "hdds ms vohn",
-      "price": "40",
-      "status": "Done"
-    },
-    {
-      "id": 3,
-      "tableNo": 4,
-      "coffeeId": 4,
-      "count": 4,
-      "note": "ha jhd uiojkn",
-      "price": "44",
-      "status": "Done"
-    },
-    {
-      "coffeeId": 4,
-      "count": 3,
-      "tableNo": 3,
-      "note": "fsdf",
+      "tableNo": 20,
+      "note": "djhdfj f fd",
       "status": "Created",
-      "price": 18.299999999999997,
-      "id": 4
-    },
-    {
-      "coffeeId": 4,
-      "count": 4,
-      "tableNo": 3,
-      "note": "fgfdgdfg",
-      "status": "Created",
-      "price": 24.4,
+      "price": 6.1,
       "id": 5
     },
     {
-      "coffeeId": 6,
-      "count": 45,
-      "tableNo": 4,
-      "note": "dsfsdfsdf",
-      "status": "Created",
-      "price": 526.95,
-      "id": 0.8174314042075683
-    },
-    {
-      "coffeeId": 4,
-      "count": 2,
-      "tableNo": 3,
-      "note": "dsfdsf",
-      "status": "Created",
-      "price": 12.2,
-      "id": 0.05510117304866324
-    },
-    {
       "coffeeId": 4,
       "count": 3,
-      "tableNo": 5,
-      "note": "fgfgfd",
+      "tableNo": 4,
+      "note": "dsfsdf",
       "status": "Created",
       "price": 18.299999999999997,
-      "id": 6
-    },
-    {
-      "coffeeId": 3,
-      "count": 2,
-      "tableNo": 1,
-      "note": "sdsdsfds",
-      "status": "Created",
-      "price": 17.2,
       "id": 7
     }
   ]

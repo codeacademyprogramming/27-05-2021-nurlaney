@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from "react-loader-spinner";
 import { coffeeService } from '../coffeeService';
 import { OrderOperations } from './OrderOperations';
-import { addOrder } from '../actions/orderActions';
+import { addOrder, removeOrder } from '../actions/orderActions';
 
 export const OrderPage = () => {
     const orders = useSelector(state => state.orders);
@@ -31,6 +31,12 @@ export const OrderPage = () => {
         })
     }
 
+    const handleRemoveOrder = useCallback((e) => {
+        const payload = e.target.id;
+        const dispatchRemoveOrder = removeOrder(dispatch);
+        dispatchRemoveOrder(payload);
+    }, [dispatch]);
+
     const handleClickOpenDialog = () => {
         setOpenDidalog(true);
     };
@@ -45,17 +51,21 @@ export const OrderPage = () => {
         const payload = {
             ...formState,
             status: 'Created',
-            price: Number(formState.count) * Number(coffee.price)
+            price: Number(formState.count) * Number(coffee.price),
+            coffeeId: Number(formState.coffeeId),
+            count: Number(formState.count),
+            tableNo: Number(formState.tableNo)
         };
-        const editedPayload = {
-            ...payload,
-            coffeeId: Number(payload.coffeeId),
-            count: Number(payload.count),
-            tableNo: Number(payload.tableNo)
-        }
         const dispatchAddOrder = addOrder(dispatch);
-        dispatchAddOrder(editedPayload);
+        dispatchAddOrder(payload);
         setOpenDidalog(false);
+        setformState({
+            ...formState,
+            coffeeId: '',
+            count: '',
+            tableNo: '',
+            note: ''
+        })
     }, [formState, dispatch, coffees.data]);
 
     return (
@@ -84,10 +94,10 @@ export const OrderPage = () => {
                                 (
                                     <div className='row'>
                                         {
-                                            orders.data.map((order) => {
+                                            orders.data.map((order, idx) => {
                                                 const coffee = coffeeService.getCoffeeById(coffees.data, order.coffeeId);
-                                                return (<div key={order.id} className='col-3'>
-                                                    <Order order={order} coffee={coffee} />
+                                                return (<div key={idx} className='col-3'>
+                                                    <Order handleRemoveOrder={handleRemoveOrder} order={order} coffee={coffee} />
                                                 </div>)
                                             })
                                         }

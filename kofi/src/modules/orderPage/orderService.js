@@ -12,6 +12,10 @@ class OrderService extends HttpClient {
     addOrder(data) {
         return this.post('order', data);
     }
+
+    removeOrder(id) {
+        return this.delete('order', id);
+    }
 }
 
 export const orderService = new OrderService();

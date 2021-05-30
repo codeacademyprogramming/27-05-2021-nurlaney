@@ -34,3 +34,19 @@ export function addOrder(dispatch) {
             }))
     }
 }
+
+export function removeOrder(dispatch) {
+    return function (data) {
+        orderService.removeOrder(data)
+            .then(resp => {
+                dispatch({
+                    type: `${ORDER_ACTIONS.REMOVE_ORDER}_SUCCESS`,
+                    payload: Number(data),
+                })
+            })
+            .catch(err => dispatch({
+                type: `${ORDER_ACTIONS.REMOVE_ORDER}_ERROR`,
+                error: err
+            }))
+    }
+}

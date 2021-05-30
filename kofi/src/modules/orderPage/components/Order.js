@@ -1,11 +1,10 @@
 import React from 'react'
 import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
 
-export const Order = ({ order, coffee }) => {
+export const Order = ({ order, coffee, handleRemoveOrder }) => {
     return (
         <div className='order'>
-            <DeleteIcon style={{ position: 'absolute', right: '30px', top: '34px', color: '#c3363f', cursor: 'pointer' }} />
+            <span onClick={handleRemoveOrder} id={order.id} style={{ position: 'absolute', right: '30px', top: '34px', color: '#c3363f', cursor: 'pointer', fontWeight: 'bold' }} >X</span>
             <EditIcon style={{ position: 'absolute', right: '55px', top: '34px', color: 'blue', cursor: 'pointer' }} />
             <div className='table-number'>
                 <p>{order.tableNo}</p>
