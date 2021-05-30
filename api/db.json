@@ -103,6 +103,15 @@
       "status": "Created",
       "price": 18.299999999999997,
       "id": 6
+    },
+    {
+      "coffeeId": 3,
+      "count": 2,
+      "tableNo": 1,
+      "note": "sdsdsfds",
+      "status": "Created",
+      "price": 17.2,
+      "id": 7
     }
   ]
 }

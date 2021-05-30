@@ -55,6 +55,7 @@ export const OrderPage = () => {
         }
         const dispatchAddOrder = addOrder(dispatch);
         dispatchAddOrder(editedPayload);
+        setOpenDidalog(false);
     }, [formState, dispatch, coffees.data]);
 
     return (
