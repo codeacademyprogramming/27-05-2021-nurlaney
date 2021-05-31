@@ -118,7 +118,8 @@ export const OrderPage = () => {
                 price: Number(formState.count) * Number(coffee.price),
                 coffeeId: Number(formState.coffeeId),
                 count: Number(formState.count),
-                tableNo: Number(formState.tableNo)
+                tableNo: Number(formState.tableNo),
+                id: Math.random()
             };
             const dispatchAddOrder = addOrder(dispatch);
             dispatchAddOrder(payload);
