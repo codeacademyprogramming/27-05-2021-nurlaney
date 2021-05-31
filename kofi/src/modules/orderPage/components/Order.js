@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Order = ({ order, coffee, handleRemoveOrder, handleClickOpenDialog }) => {
+export const Order = ({ order, coffee, handleRemoveOrder, handleClickOpenDialog, handleStatusChange }) => {
     return (
         <div className='order'>
             <span onClick={handleRemoveOrder} id={order.id} style={{ position: 'absolute', right: '30px', top: '34px', color: '#c3363f', cursor: 'pointer', fontWeight: 'bold' }} >X</span>
@@ -17,7 +17,7 @@ export const Order = ({ order, coffee, handleRemoveOrder, handleClickOpenDialog 
                 <p>{order.note}</p>
             </div>
             <div className='status'>
-                <select defaultValue={order.status}>
+                <select id={order.id} onChange={handleStatusChange} defaultValue={order.status}>
                     <option disabled={order.status === 'Done'}>Created</option>
                     <option disabled={order.status === 'Done'}>Preparing</option>
                     <option>Done</option>

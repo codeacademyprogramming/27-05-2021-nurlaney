@@ -25,7 +25,24 @@ export const OrderPage = () => {
     });
     const dispatch = useDispatch();
     const MySwal = withReactContent(Swal);
+    const coffee = coffeeService.getCoffeeById(coffees.data, Number(formState.coffeeId));
     const [, setShowAlert] = useState(null);
+
+
+    const handleStatusChange = (e) => {
+        const order = orders.data.find(order => order.id === Number(e.target.id));
+        const payload = {
+            id: e.target.id,
+            status: e.target.value,
+            price: order.price,
+            coffeeId: order.coffeeId,
+            count: order.count,
+            tableNo: order.tableNo,
+            note: order.note
+        }
+        const dispatchUpdateOrder = updateOrder(dispatch);
+        dispatchUpdateOrder(payload);
+    }
 
 
     const showPopup = () => {
@@ -94,7 +111,6 @@ export const OrderPage = () => {
 
     const handleAddDataToOrders = useCallback((e) => {
         e.preventDefault();
-        const coffee = coffeeService.getCoffeeById(coffees.data, Number(formState.coffeeId));
         if (selectedOrder === null) {
             const payload = {
                 ...formState,
@@ -159,7 +175,7 @@ export const OrderPage = () => {
                                             orders.data.map((order, idx) => {
                                                 const coffee = coffeeService.getCoffeeById(coffees.data, order.coffeeId);
                                                 return (<div key={idx} className='col-3'>
-                                                    <Order handleClickOpenDialog={handleClickOpenDialog} handleRemoveOrder={handleRemoveOrder} order={order} coffee={coffee} />
+                                                    <Order handleStatusChange={handleStatusChange} handleClickOpenDialog={handleClickOpenDialog} handleRemoveOrder={handleRemoveOrder} order={order} coffee={coffee} />
                                                 </div>)
                                             })
                                         }

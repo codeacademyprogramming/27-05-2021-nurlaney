@@ -53,15 +53,15 @@ export const OrderOperations = ({ openDialog, closeDialog, coffees, handleAddDat
                         </div>
                         <div className="form-group">
                             <label htmlFor="exampleFormControlInput1">Count</label>
-                            <input value={formState.count || ''} name='count' onChange={handleChange} type="number" className="form-control" id="exampleFormControlInput1" placeholder="Add selected drink's count" />
+                            <input required value={formState.count || ''} name='count' onChange={handleChange} type="number" className="form-control" id="exampleFormControlInput1" placeholder="Add selected drink's count" />
                         </div>
                         <div className="form-group">
                             <label htmlFor="exampleFormControlInput1">Table No:</label>
-                            <input value={formState.tableNo || ''} name='tableNo' onChange={handleChange} type="number" className="form-control" id="exampleFormControlInput2" placeholder="Add table number" />
+                            <input required value={formState.tableNo || ''} name='tableNo' onChange={handleChange} type="number" className="form-control" id="exampleFormControlInput2" placeholder="Add table number" />
                         </div>
                         <div className="form-group">
                             <label htmlFor="exampleFormControlTextarea1">Small note</label>
-                            <textarea value={formState.note || ''} name='note' onChange={handleChange} className="form-control" id="exampleFormControlTextarea1" placeholder='Add quick note here' rows="3"></textarea>
+                            <textarea required value={formState.note || ''} name='note' onChange={handleChange} className="form-control" id="exampleFormControlTextarea1" placeholder='Add quick note here' rows="3"></textarea>
                         </div>
                         <button className='btn btn-primary' type='submit'>Save</button>
                     </form>
