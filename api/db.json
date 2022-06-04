@@ -1,0 +1,90 @@
+{
+  "coffee": [
+    {
+      "id": 1,
+      "name": "Latte",
+      "price": "5.20"
+    },
+    {
+      "id": 2,
+      "name": "Cappucino",
+      "price": "7.40"
+    },
+    {
+      "id": 3,
+      "name": "Americano",
+      "price": "8.60"
+    },
+    {
+      "id": 4,
+      "name": "Espresso",
+      "price": "6.10"
+    },
+    {
+      "id": 5,
+      "name": "Mocha",
+      "price": "4.50"
+    },
+    {
+      "id": 6,
+      "name": "Lava Java",
+      "price": "11.71"
+    }
+  ],
+  "order": [
+    {
+      "coffeeId": 6,
+      "count": 32,
+      "tableNo": 8,
+      "note": "sd qaaaaaaaaaaaaaaaaa",
+      "id": 16,
+      "status": "Created",
+      "price": 374.72
+    },
+    {
+      "id": 17,
+      "status": "Done",
+      "price": 9,
+      "coffeeId": 5,
+      "count": 2,
+      "tableNo": 4,
+      "note": "dsdsd"
+    },
+    {
+      "coffeeId": 3,
+      "count": 1,
+      "tableNo": 2,
+      "note": "ssss ss d ",
+      "status": "Created",
+      "price": 8.6,
+      "id": 18
+    },
+    {
+      "coffeeId": 3,
+      "count": 2,
+      "tableNo": 3,
+      "note": "sdadas d sda",
+      "status": "Created",
+      "price": 17.2,
+      "id": 19
+    },
+    {
+      "coffeeId": 1,
+      "count": 2,
+      "tableNo": 1,
+      "note": "c fsf",
+      "status": "Created",
+      "price": 10.4,
+      "id": 20
+    },
+    {
+      "id": 0.9903398972591446,
+      "status": "Preparing",
+      "price": 11.71,
+      "coffeeId": 6,
+      "count": 1,
+      "tableNo": 2,
+      "note": "sss"
+    }
+  ]
+}

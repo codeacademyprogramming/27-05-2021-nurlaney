@@ -1,0 +1,76 @@
+.MuiDialog-root {
+  .MuiPaper-root {
+    background-color: #222222;
+  }
+  header {
+    background-color: $background-color;
+  }
+  .btn {
+    background-color: $text-color;
+    color: white;
+    outline: none;
+    box-shadow: none !important;
+    border: none;
+    font-weight: bold;
+    padding: 10px 50px;
+    margin-top: 20px;
+    &:hover {
+      background-color: $main-color;
+    }
+  }
+  .btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  form {
+    margin-top: 40px;
+    label {
+      color: white;
+      font-weight: bold;
+    }
+    input {
+      background-color: $secondary-text-color;
+      color: black;
+      border: none;
+      &:focus {
+        background-color: black;
+        color: white;
+        outline: none !important;
+        box-shadow: none !important;
+        border: none;
+      }
+    }
+    textarea {
+      border: none;
+      background-color: $secondary-text-color;
+      color: black;
+      &:focus {
+        background-color: black;
+        color: white;
+        outline: none !important;
+        box-shadow: none !important;
+        border: none;
+      }
+    }
+    select {
+      width: 100%;
+      outline: none;
+      padding: 10px;
+      background-color: $text-color;
+      border: none;
+      color: white;
+      font-size: 20px;
+      text-align-last: center;
+      cursor: pointer;
+      outline: none;
+      & option {
+        background-color: #222222;
+        border: none;
+      }
+      &:focus {
+        background-color: $text-color;
+        outline: none;
+      }
+    }
+  }
+}
